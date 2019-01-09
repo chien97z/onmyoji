@@ -1,3 +1,33 @@
+function showTable(){
+		for (var i = 0; i <= nShikigami.name.length -1;i++) {
+		$("table").append("<tr class='shikigami'> <td class='shikigamiName'>"+ nShikigami.name[i] + "<br>" + nShikigami.images[i] +"<br> <input type='checkbox' > <span style='display:none'> "+ nShikigami.tags[i].toLowerCase() +" </span> </td> <td>"+ nShikigami.tips[i] +"</td> <td>"+ nShikigami.locations[i].join("") +"</td> </tr>")
+		}
+		for (var i = 0; i <= rShikigami.name.length -1;i++) {
+		$("table").append("<tr class='shikigami'> <td class='shikigamiName'>"+rShikigami.name[i] + "<br>" + rShikigami.images[i] +"<br> <input type='checkbox' > <span style='display:none'> "+ rShikigami.tags[i].toLowerCase() +" </span> </td> <td>"+ rShikigami.tips[i] +"</td> <td>"+ rShikigami.locations[i].join("") +"</td> </tr>")
+		}
+		for (var i = 0; i <= srShikigami.name.length -1;i++) {
+		$("table").append("<tr class='shikigami'> <td class='shikigamiName'>"+srShikigami.name[i] + "<br>" + srShikigami.images[i] +"<br> <input type='checkbox'> <span style='display:none'> "+ srShikigami.tags[i].toLowerCase() +" </span> </td> <td>"+ srShikigami.tips[i] +"</td> <td>"+ srShikigami.locations[i].join("") +"</td> </tr>")
+		}
+	}
+	function searchByName(){
+		var input, filter, table, tr, td, i, txtValue;
+		input = document.getElementById("inputShikigami");
+		filter = input.value.toLowerCase();
+		table = document.getElementById("shikigamiTable");
+		tr = table.getElementsByTagName("tr");
+		for(i = 0; i < tr.length; i++){
+			td = tr[i].getElementsByTagName("td")[0];
+			if(td){
+				txtValue = td.textContent || td.innerText;
+				if(txtValue.toLowerCase().indexOf(filter) > -1){
+					tr[i].style.display = "";
+				}else{
+					tr[i].style.display = "none";
+				}
+			}
+		}
+	}
+
 var nShikigami = {
 			name: [
 				"Chouchin Obake", 
